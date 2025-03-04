@@ -1,0 +1,29 @@
+{
+  "name": "maroon-api",
+  "version": "1.0.0",
+  "description": "Repo for API for Maroon Concept",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "seed:dev": "node --loader ts-node/esm seed/index.ts",
+    "start:dev": "nodemon --exec 'node --loader ts-node/esm' server/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.13.3",
+    "sequelize": "^6.37.5",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/sequelize": "^4.28.20",
+    "nodemon": "^3.1.9",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2"
+  }
+}
