@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-import { Models } from "../../datastore";
+import { Models } from "../../datastore/Models";
 
 import { datastoreServices } from "../services";
 
@@ -22,7 +22,6 @@ const getAllUsers = async (_request: Request, response: Response, nextFunction: 
 
 const getUser = async (request: Request, response: Response, nextFunction: NextFunction) => {
   try {
-
     const user = await datastoreServices.getRecord(Models.User, {
       searchCondition: { id: request.params.id }
     });

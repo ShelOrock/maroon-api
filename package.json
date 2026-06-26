@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "seed:dev": "node --loader ts-node/esm seed/index.ts",
-    "start:dev": "nodemon --exec 'node --loader ts-node/esm' server/index.ts"
+    "database:initialize": "node --loader ts-node/esm datastore/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +19,9 @@
     "typescript": "^5.7.3"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.5.0",
     "@types/express": "^5.0.0",
+    "@types/pg": "^8.20.0",
     "@types/sequelize": "^4.28.20",
     "nodemon": "^3.1.9",
     "ts-loader": "^9.5.2",

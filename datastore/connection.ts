@@ -1,9 +1,10 @@
 import dotenv from "dotenv";
+
 import { Dialect, Sequelize } from "sequelize";
 
 dotenv.config();
 
-const datastore: Sequelize = new Sequelize(
+const connection: Sequelize = new Sequelize(
   process.env.DATASTORE_NAME,
   process.env.DATASTORE_USERNAME,
   process.env.DATASTORE_PASSWORD, {
@@ -13,4 +14,4 @@ const datastore: Sequelize = new Sequelize(
   }
 );
 
-export default datastore;
+export default connection;

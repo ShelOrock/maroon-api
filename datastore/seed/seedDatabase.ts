@@ -1,10 +1,12 @@
 import chalk from "chalk";
-import generateData from "./generateData";
+import { seedFriendships, seedUsers } from "./seeds";
+import { AppModelTypes } from "../types";
 
-const createSeed = async () => {
+const seedDatabase = async (models: AppModelTypes) => {
   try {
     console.log(chalk.yellowBright("Creating a new seed..."));
-    await generateData();
+    const users = await seedUsers(models);
+    await seedFriendships(models, users)
     console.log(chalk.greenBright("Seed successfully created!"));
 
   } catch(error) {
@@ -13,4 +15,4 @@ const createSeed = async () => {
   };
 };
 
-export default createSeed;
+export default seedDatabase;
