@@ -1,13 +1,13 @@
-import { FriendshipTypes } from "../../Models/Friendship/types";
-import { UserTypes } from "../../Models/User/types"
-import { AppModelTypes } from "../../types";
 import { generateFriendships } from "../generators"
+
+import { AppModelTypes } from "../../types";
+import { UserTypes } from "../../Models/User/types"
 
 const seedFriendships = async ({ Friendship }: AppModelTypes, users: UserTypes[]): Promise<void> => {
   try {
-  const friendships = generateFriendships(users);
+    const friendships = generateFriendships(users);
 
-  await Friendship.bulkCreate(friendships);
+    await Friendship.bulkCreate(friendships);
 
   } catch(error) {
     console.log("Error creating friendships", error);

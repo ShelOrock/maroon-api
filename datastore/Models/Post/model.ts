@@ -10,17 +10,27 @@ const definePostModel: DefineModelType<PostTypes> = connection => {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4
     },
+
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false
+    },
   
     image: {
       type: DataTypes.STRING,
     },
   
     caption: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
   
     likes: {
       type: DataTypes.INTEGER,
+    },
+
+    status: {
+      type: DataTypes.STRING,
+      values: [ "drafted", "published" ]
     }
   });
 

@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+
 import { RoleTypes, UserTypes } from "../../Models/User/types";
 
 const generateUsers = (count: number): Partial<UserTypes>[] => {
