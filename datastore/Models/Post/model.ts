@@ -11,10 +11,14 @@ const definePostModel: DefineModelType<PostTypes> = connection => {
       defaultValue: DataTypes.UUIDV4
     },
 
-    userId: {
+    ownerId: {
       type: DataTypes.UUID,
       allowNull: false
     },
+
+    packId: {
+      type: DataTypes.UUID,
+    }, 
   
     image: {
       type: DataTypes.STRING,

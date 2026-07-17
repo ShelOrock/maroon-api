@@ -11,15 +11,21 @@ const definePackModel: DefineModelType<PackTypes> = connection => {
       defaultValue: DataTypes.UUIDV4
     },
 
-    postId: {
+    ownerId: {
       type: DataTypes.UUID,
       allowNull: false
     },
 
-    openCount: {
+    views: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0
+    },
+
+    status: {
+      type: DataTypes.ENUM,
+      allowNull: false,
+      values: [ "drafted", "published", "hidden" ]
     }
   });
 

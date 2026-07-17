@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 import { RoleTypes, UserTypes } from "../../Models/User/types";
 
 const generateUsers = (count: number): Partial<UserTypes>[] => {
-  const users = Array.from({ length: count }, () => {
+  const users: Partial<UserTypes>[] = Array.from({ length: count }, () => {
     const singleUser = {
       username: faker.internet.username(),
       email: faker.internet.email(),

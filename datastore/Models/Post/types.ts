@@ -1,4 +1,8 @@
-import { InferAttributes, InferCreationAttributes, Model } from "sequelize";
+import {
+  InferAttributes,
+  InferCreationAttributes,
+  Model 
+} from "sequelize";
 
 type StatusTypes =
  | "drafted"
@@ -6,7 +10,8 @@ type StatusTypes =
 
 interface PostAttributeTypes {
   id: string;
-  userId: string;
+  ownerId: string;
+  packId: string;
   image: string;
   caption?: string;
   likes: number;

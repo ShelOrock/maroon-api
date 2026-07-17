@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { seedFriendships, seedPosts, seedUsers } from "./seeds";
+import { seedFriendships, seedPacks, seedPosts, seedUsers } from "./seeds";
 import { AppModelTypes } from "../types";
 
 const seedDatabase = async (models: AppModelTypes) => {
@@ -7,7 +7,8 @@ const seedDatabase = async (models: AppModelTypes) => {
     console.log(chalk.yellowBright("Creating a new seed..."));
     const users = await seedUsers(models);
     await seedFriendships(models, users);
-    await seedPosts(models, users);
+    const packs = await seedPacks(models, users);
+    await seedPosts(models, packs);
     console.log(chalk.greenBright("Seed successfully created!"));
 
   } catch(error) {

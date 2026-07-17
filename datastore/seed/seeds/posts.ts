@@ -1,11 +1,11 @@
 import { generatePosts } from "../generators"
 
 import { AppModelTypes } from "../../types";
-import { UserTypes } from "../../Models/User/types"
+import { PackTypes } from "../../Models/Pack/types";
 
-const seedPosts = async ({ Post }: AppModelTypes, users: UserTypes[]): Promise<void> => {
+const seedPosts = async ({ Post }: AppModelTypes, packs: PackTypes[]): Promise<void> => {
   try {
-    const posts = generatePosts(users);
+    const posts = generatePosts(packs);
 
     await Post.bulkCreate(posts);
 

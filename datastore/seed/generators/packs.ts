@@ -1,24 +1,31 @@
 import { faker } from "@faker-js/faker";
 
-import { PostTypes } from "../../Models/Post/types";
 import { PackTypes } from "../../Models/Pack/types";
+import { UserTypes } from "../../Models/User/types";
 
-const generatePosts = (packs: PackTypes[]): Partial<PostTypes>[] => {
+const generatePacks = (users: UserTypes[]): Partial<PackTypes>[] => {
 
-  enum PostStatus {
+  enum PackStatus {
     DRAFTED = "drafted",
     PUBLISHED = "published",
+    HIDDEN = "hidden"
   };
 
-  const posts: Partial<PostTypes>[] = [];
+  const packs: Partial<PackTypes>[] = [];
 
-  packs.forEach(pack => {
-    const postCount = pack.status === "drafted"
-      ? 5
-      : faker.number.int({ min: 1, max: 5 });
+  users.forEach(user => {
+    const packArray = faker.helpers.weightedArrayElement([
+      { value: 0, weight: 2 },
+      { value: 1, weight: 8 },
+      { value: 10, weight: 25 },
+      { value: 25, weight: 30 },
+      { value: 50, weight: 25 },
+      { value: 100, weight: 8 },
+      { value: 1000, weight: 2 }
+    ]);
 
-    Array.from({ length: postCount }).forEach(() => {
-      const likes = faker.helpers.weightedArrayElement([
+    for(let i = 0; i < packArray; i++) {
+      const views = faker.helpers.weightedArrayElement([
         { value: 3, weight: 1 },
         { value: 5, weight: 1 },
         { value: 8, weight: 2 },
@@ -42,22 +49,21 @@ const generatePosts = (packs: PackTypes[]): Partial<PostTypes>[] => {
       ]);
 
       const status = faker.helpers.weightedArrayElement([
-        { value: PostStatus.DRAFTED, weight: 20 },
-        { value: PostStatus.PUBLISHED, weight: 80 },
+        { value: PackStatus.DRAFTED, weight: 20 },
+        { value: PackStatus.PUBLISHED, weight: 70 },
+        { value: PackStatus.HIDDEN, weight: 10 }
       ]);
 
-      posts.push({
-        ownerId: pack.ownerId,
-        packId: status === PostStatus.DRAFTED ? null : pack.id,
-        image: faker.image.url(),
-        caption: faker.lorem.sentence(),
-        likes: status === PostStatus.DRAFTED ? 0 : likes,
+      packs.push({
+        ownerId: user.id,
+        views: status === PackStatus.DRAFTED ? 0 : views,
         status
       });
-    });
+    };
   });
 
-  return posts;
+  return packs;
+
 };
 
-export default generatePosts;
+export default generatePacks;

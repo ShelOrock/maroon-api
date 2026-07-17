@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 import { UserTypes } from "../../Models/User/types";
 import { FriendshipTypes } from "../../Models/Friendship/types";
 
-const generateFriendships = (users: UserTypes[]) => {
+const generateFriendships = (users: UserTypes[]): Partial<FriendshipTypes>[] => {
 
   enum FriendshipStatus {
     PENDING = "pending",
